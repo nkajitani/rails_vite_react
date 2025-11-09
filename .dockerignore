@@ -2,6 +2,8 @@
 log/*
 tmp/*
 vendor/bundle/
+node_modules/
+public/vite*
 public/uploads/*
 spec/coverage/
 .DS_Store
