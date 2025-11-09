@@ -1,0 +1,41 @@
+<h2>アカウント登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :name, '名前' %>
+    <div><%= f.text_field :name, autofocus: true, autocomplete: "name" %></div>
+    <% if resource.errors[:name].present? %>
+      <span style="color: red"><%= resource.errors.full_messages_for(:name).join(', ') %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, 'メールアドレス' %>
+    <div><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+    <% if resource.errors[:email].present? %>
+      <span style="color: red"><%= resource.errors.full_messages_for(:email).join(', ') %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "パスワード（#{@minimum_password_length}字以上）" %>
+    <div><%= f.password_field :password, autocomplete: "new-password" %></div>
+    <% if resource.errors[:password].present? %>
+      <span style="color: red"><%= resource.errors.full_messages_for(:password).join(', ') %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, 'パスワード（確認用）' %>
+    <div><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+    <% if resource.errors[:password_confirmation].present? %>
+      <span style="color: red"><%= resource.errors.full_messages_for(:password_confirmation).join(', ') %></span>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "アカウント登録" %>
+  </div>
+<% end %>
+
+<%#= render "users/shared/links" %>

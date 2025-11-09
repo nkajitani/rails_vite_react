@@ -1,0 +1,51 @@
+<%= form_with(model: [:admin, post]) do |f| %>
+  <div class="field">
+    <div class="item">
+      <%= f.label :title, 'タイトル' %>
+    </div>
+    <%= f.text_field :title %>
+    <div style="color: red">
+      <%= post.errors.full_messages_for(:title).join(', ') if post.errors[:title].present? %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="item">
+      <%= f.label :body, '本文' %>
+    </div>
+    <%= f.textarea :body %>
+    <div style="color: red">
+      <%= post.errors.full_messages_for(:body).join(', ') if post.errors[:body].present? %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="item">
+      <%= f.label :image, '画像ファイル' %>
+    </div>
+    <% if @post.image? %>
+      <div>
+        <%= image_tag @post.image.url %>
+      </div>
+    <% end %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+    <div style="color: red">
+      <%= post.errors.full_messages_for(:image).join(', ') if post.errors[:image].present? %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="item">
+      <%= f.label :published_at, '公開日時' %>
+    </div>
+    <%= f.datetime_field :published_at %>
+    <div style="color: red">
+      <%= post.errors.full_messages_for(:published_at).join(', ') if post.errors[:published_at].present? %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

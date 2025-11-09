@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      post: ブログ
+    attributes:
+      post:
+        title: タイトル
+        body: 本文
+        image: 画像
+        published_at: 公開日時

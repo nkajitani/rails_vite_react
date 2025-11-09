@@ -1,0 +1,11 @@
+<% content_for :title, "新規ブログ" %>
+
+<h1>新規ブログ</h1>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "ブログ一覧へ", admin_posts_path %>
+</div>

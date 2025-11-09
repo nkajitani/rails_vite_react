@@ -1,0 +1,27 @@
+<h2>コメント入力フォーム</h2>
+
+<%= form_with(url: post_comments_path(@post), model: @comment, method: :post) do |f| %>
+  <div class="field">
+    <div class="item">
+      <%= f.label :name, 'タイトル' %>
+    </div>
+    <%= f.text_field :name %>
+    <div style="color: red">
+      <%= comment.errors.full_messages_for(:name).join(', ') if comment.errors[:name].present? %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="item">
+      <%= f.label :body, '本文' %>
+    </div>
+    <%= f.textarea :body %>
+    <div style="color: red">
+      <%= comment.errors.full_messages_for(:body).join(', ') if comment.errors[:body].present? %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

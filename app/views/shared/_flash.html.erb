@@ -1,0 +1,8 @@
+<!-- フラッシュメッセージ -->
+<% if notice.present? %>
+  <div class="notice"><p style="color: green"><%= notice %></p></div>
+<% end %>
+
+<% if alert.present? %>
+  <div class="alert"><p style="color: red"><%= alert %></p></div>
+<% end %>

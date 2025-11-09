@@ -1,0 +1,9 @@
+<h2>詳細情報</h2>
+<div id="<%= dom_id post %>">
+  <figure>
+    <%= image_tag post.image.url, alt: post.title %>
+    <figcaption><%= File.basename(post.image.url) %></figcaption>
+  </figure>
+  <div>公開日: <%= post.published_at ? l(post.published_at, format: :long) : '—' %></div>
+  <div><%= render_markdown(post.body) || '-' %></div>
+</div>

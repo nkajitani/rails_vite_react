@@ -1,0 +1,12 @@
+<% content_for :title, "ブログ編集" %>
+
+<h1>ブログ編集</h1>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "このブログ詳細へ", [:admin, @post] %> |
+  <%= link_to "ブログ一覧へ", admin_posts_path %>
+</div>

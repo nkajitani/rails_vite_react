@@ -1,0 +1,8 @@
+<%= render @post %>
+
+<div>
+  <%= link_to "ブログ編集", edit_admin_post_path(@post) %> |
+  <%= link_to "ブログ一覧へ", admin_posts_path %>
+
+  <%= button_to "ブログ削除", [:admin, @post], method: :delete %>
+</div>

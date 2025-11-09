@@ -1,0 +1,25 @@
+
+<h2>コメント一覧</h2>
+
+<%= paginate comments %>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>コメント</th>
+      <th>投稿日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.name %></td>
+        <td><%= render_markdown(comment.body) %></td>
+        <td><%= l(comment.created_at, format: :long) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate comments %>

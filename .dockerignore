@@ -1,0 +1,7 @@
+.git
+log/*
+tmp/*
+vendor/bundle/
+public/uploads/*
+spec/coverage/
+.DS_Store
