@@ -9,26 +9,20 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # front
-  scope module: "front" do
-    root "posts#index"
-    resources :posts, only: [ :show ] do
-      resources :comments, only: [ :create ]
+  # # letter_opener
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
+  namespace :api do
+    namespace :v1 do
+      draw :front
+      draw :admin
     end
-   end
-
-  # admin
-  namespace :admin do
-    root "home#index"
-    resources :posts
-    resource :profile, only: [ :show, :edit, :update ]
-  end
-  devise_for :users, path: "admin", skip: [ :registrations ], module: "users"
-  devise_scope :user do
-    get  "admin/sign_up", to: "users/registrations#new",    as: :new_user_registration
-    post "admin/sign_up", to: "users/registrations#create", as: :user_registration
   end
 
-  # letter_opener
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  # SPA: すべてのHTMLリクエストを同じページで処理
+  get '*path', to: 'spa#index', constraints: ->(req) {
+    !req.xhr? && req.format.html?
+  }
+
+  root 'spa#index'
 end
