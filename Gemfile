@@ -48,6 +48,8 @@ gem "commonmarker", "~> 2.5.0"
 
 gem 'vite_rails', '~> 3.0.19'
 
+gem 'devise-jwt', '~> 0.12.1'
+
 group :development do
   gem "letter_opener_web", "~> 3.0.0"
 
