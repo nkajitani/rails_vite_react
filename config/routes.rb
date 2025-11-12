@@ -13,16 +13,11 @@ Rails.application.routes.draw do
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   namespace :api do
-    namespace :v1 do
+    namespace :v1, defaults: { format: :json } do
       draw :front
       draw :admin
     end
   end
 
-  # SPA: すべてのHTMLリクエストを同じページで処理
-  get '*path', to: 'spa#index', constraints: ->(req) {
-    !req.xhr? && req.format.html?
-  }
-
-  root 'spa#index'
+  draw :auth
 end
