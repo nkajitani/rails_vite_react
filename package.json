@@ -5,8 +5,10 @@
     "@types/react": "^18.3.26",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.9.3",
     "vite": "^5.4.21",
-    "vite-plugin-ruby": "^5.1.1"
+    "vite-plugin-ruby": "^5.1.1",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
     "@hotwired/turbo-rails": "^8.0.20",
