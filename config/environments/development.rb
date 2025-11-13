@@ -70,4 +70,8 @@ Rails.application.configure do
   config.debug_exception_response_format = :default
   # letter_opener_web settings
   config.action_mailer.delivery_method = :letter_opener_web
+
+  # Allow requests from "web" and "localhost" hosts.
+  config.hosts << "web"
+  config.hosts << "localhost"
 end
