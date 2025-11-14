@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from '@/router'
 
-import '../styles/login.css'
+import '@/styles/login.css'
 
 
 const container = document.getElementById('root')
