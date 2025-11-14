@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import App from '../router'
+import App from '@/router'
 
 import '../styles/login.css'
 
