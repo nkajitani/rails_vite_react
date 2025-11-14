@@ -11,10 +11,9 @@ const useApiSubmit = () => {
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           "X-CSRF-Token": useCsrfToken(),
         },
-        body: JSON.stringify(data),
+        body: data,
       });
       return response;
     } finally {
