@@ -1,12 +1,12 @@
-import { AuthCard, LoginForm } from "@/components/auth";
-import useLoginForm from "@/hooks/useLoginForm";
+import { AuthCard, SignInForm } from "@/components/auth";
+import useSignInForm from "@/hooks/useSignInForm";
 import type React from "react";
 
 
 const SignIn: React.FC = () => {
-  const { formData, errors, handleChange, handleSubmit, loading, showPassword, setShowPassword } = useLoginForm();
+  const { formData, errors, handleChange, handleSubmit, loading, showPassword, setShowPassword } = useSignInForm();
   return (
-    <div className="login-container">
+    <div className="auth-container">
       <AuthCard
         title="管理者ログイン"
         subtitle="管理者用のログインページです"
@@ -18,7 +18,7 @@ const SignIn: React.FC = () => {
           </>
         }
       >
-        <LoginForm
+        <SignInForm
           formData={formData}
           errors={errors}
           loading={loading}

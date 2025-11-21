@@ -3,8 +3,10 @@ import type { SignInFormData, SignInFormErrors } from "@/types/auth"
 import useFormState from "@/hooks/useFormState"
 import useApiSubmit from "@/hooks/useApiSubmit"
 import useCsrfToken from "@/hooks/useCsrfToken"
+import { useNavigate } from 'react-router-dom'
 
-const useLoginForm = () => {
+const useSignInForm = () => {
+  const navigate = useNavigate()
   const { formData, errors, handleChange, setFieldError, clearErrors } = useFormState<
          SignInFormData,
          SignInFormErrors
@@ -34,7 +36,7 @@ const useLoginForm = () => {
       const response = await submit("/api/v1/auth/sign_in", data)
 
       if (response.ok) {
-        window.location.href = "/admin/"
+        navigate("/admin/")
       } else {
         setFieldError("general", "メールアドレスまたはパスワードが正しくありません")
       }
@@ -54,4 +56,4 @@ const useLoginForm = () => {
   }
 }
 
-export default useLoginForm
+export default useSignInForm

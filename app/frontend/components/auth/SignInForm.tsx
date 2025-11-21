@@ -4,7 +4,7 @@ import { PasswordField } from '@/components/ui'
 import { TextField } from '@/components/ui'
 import type { SignInFormData, SignInFormErrors } from '@/types/auth'
 
-interface LoginFormProps {
+interface SignInFormProps {
   formData: SignInFormData
   errors: SignInFormErrors
   loading: boolean
@@ -14,7 +14,7 @@ interface LoginFormProps {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({
+export const SignInForm: React.FC<SignInFormProps> = ({
   formData,
   errors,
   loading,
@@ -24,7 +24,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onSubmit,
  }) => {
   return (
-    <form onSubmit={onSubmit} className="login-form">
+    <form onSubmit={onSubmit} className="auth-form">
       <Alert message={errors.general} />
 
       <TextField

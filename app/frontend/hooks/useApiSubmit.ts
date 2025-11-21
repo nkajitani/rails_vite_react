@@ -3,15 +3,15 @@ import useCsrfToken from "@/hooks/useCsrfToken";
 
 const useApiSubmit = () => {
   const [loading, setLoading] = useState(false);
+  const csrfToken = useCsrfToken();
 
-  // API送信ロジックをここに実装
-  const submit = async (url: string, data: Record<string, any>) => {
+  const submit = async (url: string, data: FormData) => {
     setLoading(true);
     try {
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          "X-CSRF-Token": useCsrfToken(),
+          "X-CSRF-Token": csrfToken,
         },
         body: data,
       });

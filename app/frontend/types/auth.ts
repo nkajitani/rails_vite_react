@@ -26,3 +26,20 @@ export interface SignUpFormErrors {
   general?: string
   [key: string]: string | undefined
 }
+
+export const SignUpFieldLabels: Record<keyof SignUpFormData, string> = {
+  name: '名前',
+  email: 'メールアドレス',
+  password: 'パスワード',
+  passwordConfirmation: 'パスワード確認',
+}
+
+export interface SignUpResponse {
+  data: {
+    id: number
+    name: string
+    email: string
+  },
+  errors?: Record<string, string[]>,
+  message: string
+}
