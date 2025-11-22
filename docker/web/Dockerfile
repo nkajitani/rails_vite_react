@@ -11,6 +11,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       build-essential \
       libyaml-dev \
+      git \
       pkg-config \
       # MySQL接続用
       libssl-dev \
