@@ -1,9 +1,9 @@
 import { useState } from "react"
 import type { SignInFormData, SignInFormErrors } from "@/types/auth"
 import useFormState from "@/hooks/useFormState"
-import useApiSubmit from "@/hooks/useApiSubmit"
-import useCsrfToken from "@/hooks/useCsrfToken"
 import { useNavigate } from 'react-router-dom'
+import { authService } from "@/services/authService"
+import { ApiError } from "@/services/apiClient"
 
 const useSignInForm = () => {
   const navigate = useNavigate()
@@ -16,32 +16,28 @@ const useSignInForm = () => {
          rememberMe: false,
        })
   
-  const { submit, loading } = useApiSubmit()
+  const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
-  const csrfToken = useCsrfToken()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     clearErrors()
+    setLoading(true)
 
     try {
-      const data = new FormData()
-      data.append("user[email]", formData.email)
-      data.append("user[password]", formData.password)
-      if (formData.rememberMe) {
-        data.append("user[remember_me]", "1")
-      }
-      data.append("authenticity_token", csrfToken)
-
-      const response = await submit("/api/v1/auth/sign_in", data)
-
-      if (response.ok) {
-        navigate("/admin/")
-      } else {
-        setFieldError("general", "メールアドレスまたはパスワードが正しくありません")
-      }
+      await authService.signIn({
+        email: formData.email,
+        password: formData.password,
+      })
+      navigate("/admin/")
     } catch (error) {
-      setFieldError("general", "ネットワークエラーが発生しました")
+      if (error instanceof ApiError) {
+        setFieldError("general", "メールアドレスまたはパスワードが正しくありません")
+      } else {
+        setFieldError("general", "ネットワークエラーが発生しました")
+      }
+    } finally {
+      setLoading(false)
     }
   }
 

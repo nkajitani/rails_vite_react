@@ -34,12 +34,18 @@ export const SignUpFieldLabels: Record<keyof SignUpFormData, string> = {
   passwordConfirmation: 'パスワード確認',
 }
 
-export interface SignUpResponse {
-  data: {
-    id: number
-    name: string
-    email: string
-  },
-  errors?: Record<string, string[]>,
-  message: string
+export interface User {
+  id: number
+  name: string
+  email: string
+}
+
+export interface AuthResponse {
+  data: User;
+  message: string;
+}
+
+export interface AuthErrorResponse {
+  message: string;
+  errors?: Record<string, string[]>;
 }
