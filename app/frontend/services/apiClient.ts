@@ -98,6 +98,11 @@ class ApiClient {
     const response = await this.client.post<T>(url, data, config);
     return response.data;
   }
+
+  async delete<T>(url: string, config = {}) {
+    const response = await this.client.delete<T>(url, config);
+    return response.data;
+  }
 }
 
 export const apiClient = new ApiClient();

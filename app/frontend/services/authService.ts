@@ -42,5 +42,14 @@ export const authService = {
         password: params.password,
       },
     });
+  },
+
+  async signOut() {
+    await apiClient.delete<AuthResponse>("/auth/sign_out");
+    apiClient.clearAuth();
+  },
+
+  async currentUser() {
+    return apiClient.get<AuthResponse>("/me");
   }
 }
