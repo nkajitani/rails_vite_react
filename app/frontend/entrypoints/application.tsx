@@ -1,11 +1,13 @@
-import { createRoot } from 'react-dom/client'
-import App from '@/router'
+import { StrictMode } from "react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "../router";
+import { createRoot } from "react-dom/client";
 
-import '@/styles/auth.css'
-import '@/styles/tailwind.css'
+import "@/styles/auth.css";
+import "@/styles/tailwind.css";
 
-const container = document.getElementById('root')
-if (container) {
-  const root = createRoot(container)
-  root.render(<App />)
-}
+createRoot(document.getElementById("root")!).render(
+	<StrictMode>
+		<RouterProvider router={router} />
+	</StrictMode>,
+);

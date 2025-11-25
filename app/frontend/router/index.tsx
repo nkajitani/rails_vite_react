@@ -1,17 +1,15 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import SignIn from '@/pages/admin/SignIn'
-import SignUp from '@/pages/admin/SignUp'
+import { createBrowserRouter } from "react-router-dom";
+import SignIn from "@/pages/admin/SignIn";
+import SignUp from "@/pages/admin/SignUp";
+import Dashboard from "@/pages/admin/Dashboard";
+import { ProtectedRoute } from "./ProtectedRoute";
 
-const App: React.FC = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/admin/sign_in" element={<SignIn />} />
-        <Route path="/admin/sign_up" element={<SignUp />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+export const router = createBrowserRouter([
+	{ path: "/admin/sign_in", element: <SignIn /> },
+	{ path: "/admin/sign_up", element: <SignUp /> },
 
-export default App
+	{
+		element: <ProtectedRoute />,
+		children: [{ index: true, path: "/admin", element: <Dashboard /> }],
+	},
+]);
